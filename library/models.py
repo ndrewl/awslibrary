@@ -1,3 +1,32 @@
+import os
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.user.username
+
+
+class Author(models.Model):
+    name = models.CharField(max_length=500, blank=False)
+
+    def __str__(self):
+        return self.name
+
+
+def _get_updload_file_path(instance, filename):
+    return os.path.join(instance.id, filename)
+
+
+class Book(models.Model):
+    title = models.CharField(max_length=1000, blank=False)
+    year = models.IntegerField()
+    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    goodreads_link = models.URLField(blank=True)
+    file = models.FileField(null=True, blank=True, upload_to=_get_updload_file_path)
+
+    def __str__(self):
+        return f"{self.author.name} - {self.title}"

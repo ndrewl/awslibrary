@@ -1,0 +1,27 @@
+<table>
+    <caption>Мои книги</caption>
+    <thead>
+        <tr>
+            <th scope='col'>Название</th>
+            <th scope='col'>Автор</th>
+            <th scope='col'>Ссылка (Goodreads)</th>
+            <th scope='col'>Ссылка (для скачивания)</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in books %}
+        <tr>
+            <th scope='row'>{{ book.title }}</th>
+            <td>{{ book.author }}</td>
+            <td><a href="{{ book.goodreads_link }}">{{ book.goodreads_link }}</a></td>
+            <td>{{ book.file }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th scope='row' colspan='2'>Всего книг</th>
+            <td colspan='2'>{{ books | length }}</td>
+        </tr>
+    </tfoot>
+</table>
