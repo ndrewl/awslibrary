@@ -18,7 +18,7 @@ class Author(models.Model):
 
 
 def _get_updload_file_path(instance, filename):
-    return os.path.join(instance.id, filename)
+    return os.path.join(str(instance.id), filename)
 
 
 class Book(models.Model):

@@ -17,7 +17,11 @@
             <th scope='row'><a href={% url 'book' id=book.id %}>{{ book.title }}</a></th>
             <td>{{ book.author }}</td>
             <td><a href="{{ book.goodreads_link }}">info</a></td>
-            <td>{{ book.file }}</td>
+            <td>
+                {% if book.file %}
+                <a href="{{ book.file.url }}">download</a>
+                {% endif %}
+            </td>
         </tr>
         {% endfor %}
     </tbody>
