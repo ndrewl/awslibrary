@@ -1,0 +1,169 @@
+html {
+    font-size: 10px;
+}
+
+button, 
+input, 
+select, 
+textarea { 
+    font-family: inherit;
+    font-size: 100%; 
+    box-sizing: border-box; 
+    padding: 0; margin: 0; 
+}
+
+table {
+    table-layout: fixed;
+    width: 100%;
+    border-collapse: collapse;
+    border: 3px solid green;
+    font-size: 1.5rem;
+}
+
+thead th:nth-child(1) {
+    width: 30%;
+}
+
+thead th:nth-child(2) {
+    width: 30%;
+}
+
+thead th:nth-child(3) {
+    width: 20%;
+}
+
+thead th:nth-child(4) {
+    width: 20%;
+}
+
+th, td {
+    padding: 10px;
+}
+
+tbody td {
+    text-align: center;
+}
+
+tfoot th {
+    text-align: right;
+}
+
+thead th, tfoot th, tfoot td {
+    background-color: #7E9F35;
+    
+}
+thead th {
+    border: 3px solid #374F00;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #A8C663;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #D6EE9F;
+  }
+
+caption {
+    font-family: cursive;
+    padding: 20px;
+    font-style: italic;
+    caption-side: bottom;
+    color: #666;
+    text-align: right;
+    letter-spacing: 1px;
+}
+
+.header {
+    width: 100%;
+    margin-bottom: 5rem;
+}
+
+.site-title {
+    width: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 5rem;
+    /* padding: 1rem; */
+}
+
+.auth-links {
+    width: 50%;
+    text-align: right;
+    /* padding:1rem; */
+    /* position: fixed; */
+    /* right: 0%; */
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 2rem;
+}
+
+a {
+    text-decoration: none;
+    color: green;
+}
+a:hover {
+    background-color: yellow;
+}
+
+.content {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    width: 75%;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.main-menu {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.main-menu ul {
+    padding: 0;
+    width: 100%;
+}
+
+.main-menu li {
+    display: inline;
+}
+
+.main-menu a {
+    outline: none;
+    text-decoration: none;
+    display: inline-block;
+    width: 19.5%;
+    margin-right: 0.625%;
+    text-align: center;
+    line-height: 3;
+    color: black;
+}
+
+.main-menu li:last-child a {
+    margin-right: 0;
+}
+
+.main-menu a:link, .main-menu a:visited, .main-menu a:focus {
+    background: purple;
+}
+
+.main-menu a:hover {     
+    background: orange;
+}
+
+.main-menu a:active {
+    background: red;
+    color: white;
+}
+
+input {
+    margin-bottom: 1.5rem;
+}
+label {
+    display: block;
+}
+
+input[type=submit] {
+    display: block;
+}

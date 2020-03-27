@@ -1,0 +1,9 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
+<div class='book-info'>
+    <div>Title: {{ book.title }}</div>
+    <div>Author: {{ book.author }}</div>
+    <div>Goodreads link: {{ book.goodreads_link }}</div>
+</div>
+{% endblock %}

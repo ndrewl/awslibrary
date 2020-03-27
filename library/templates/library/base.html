@@ -1,0 +1,42 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Моя библиотека</title>
+    <link rel="stylesheet" href="{% static 'css/library.css' %}">
+</head>
+
+<body>
+    <div class='header'>
+        <div class='site-title'>
+            <a href='/'>Моя библиотека</a>
+        </div>
+    </div>
+
+    <ul class="main-menu">
+        <li>
+            <a href="{% url 'mybooks' %}">Мои книги</a>
+        </li>
+        <li>
+            <a href="{% url 'allbooks' %}">Все книги</a>
+        </li>
+        <li>
+            <a href="{% url 'newbook' %}">Добавить книгу</a>
+        </li>
+        <li>
+            {% if user.is_authenticated %}
+            <a href="{% url 'logout' %}">{{ user.username }} (выход)</a>
+            {% else %}
+            <a href="{% url 'login' %}">вход</a>
+            {% endif %}
+        </li>
+    </ul>
+
+
+    <div class='content'>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

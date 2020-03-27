@@ -23,10 +23,17 @@ def _get_updload_file_path(instance, filename):
 
 class Book(models.Model):
     title = models.CharField(max_length=1000, blank=False)
-    year = models.IntegerField()
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     goodreads_link = models.URLField(blank=True)
     file = models.FileField(null=True, blank=True, upload_to=_get_updload_file_path)
 
     def __str__(self):
         return f"{self.author.name} - {self.title}"
+
+
+class BookLink(models.Model):
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"{self.user} - {self.book}"

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from library.models import Profile, Author, Book
+from library.models import Profile, Author, Book, BookLink
 
 
 class ProfileAdmin(admin.ModelAdmin):
@@ -13,7 +13,11 @@ class AuthorAdmin(admin.ModelAdmin):
 class BookAdmin(admin.ModelAdmin):
     pass
 
+class BookLinkAdmin(admin.ModelAdmin):
+    pass
+
 
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Book, BookAdmin)
+admin.site.register(BookLink, BookLinkAdmin)

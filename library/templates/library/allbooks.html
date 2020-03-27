@@ -1,19 +1,22 @@
+{% extends 'library/base.html' %}
+
+{% block content %}
 <table>
     <caption>Мои книги</caption>
     <thead>
         <tr>
             <th scope='col'>Название</th>
             <th scope='col'>Автор</th>
-            <th scope='col'>Ссылка (Goodreads)</th>
+            <th scope='col'>Ссылка (информация)</th>
             <th scope='col'>Ссылка (для скачивания)</th>
         </tr>
     </thead>
     <tbody>
         {% for book in books %}
         <tr>
-            <th scope='row'>{{ book.title }}</th>
+            <th scope='row'><a href={% url 'book' id=book.id %}>{{ book.title }}</a></th>
             <td>{{ book.author }}</td>
-            <td><a href="{{ book.goodreads_link }}">{{ book.goodreads_link }}</a></td>
+            <td><a href="{{ book.goodreads_link }}">info</a></td>
             <td>{{ book.file }}</td>
         </tr>
         {% endfor %}
@@ -25,3 +28,4 @@
         </tr>
     </tfoot>
 </table>
+{% endblock %}
