@@ -25,7 +25,7 @@ SECRET_KEY = '11o4ro6d0wua82n-hnti#*qw8!6fm=220h2jed2z4%03+0jwlj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['awslibrary.herokuapp.com']
 
 
 # Application definition
