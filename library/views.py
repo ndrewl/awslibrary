@@ -84,8 +84,7 @@ class NewBook(View):
         return render(request, self.template_name, {"form": self.form_class()})
 
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST)
-        print(request.POST)
+        form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
             author, created = Author.objects.get_or_create(
                 name=form.cleaned_data["author"],
@@ -94,10 +93,9 @@ class NewBook(View):
                 author=author,
                 title=form.cleaned_data["title"],
                 goodreads_link=form.cleaned_data["goodreads_link"],
+                file=request.FILES["file"],
             )
-            print(request.user.id)
             user = User.objects.get(id=request.user.id)
-            print(user)
             newLink, created = BookLink.objects.get_or_create(book=newBook, user=user)
             return redirect("book", id=newBook.id)
         return render(request, self.template_name, {"form": form})

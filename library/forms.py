@@ -8,6 +8,7 @@ class NewBookForm(forms.Form):
     author = forms.CharField(max_length=500, required=True)
     title = forms.CharField(max_length=1000, required=True)
     goodreads_link = forms.URLField(required=False)
+    file = forms.FileField()
 
 
 class RegistrationForm(forms.Form):
