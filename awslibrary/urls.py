@@ -24,6 +24,9 @@ urlpatterns = [
     path("books/", views.allbooks, name="allbooks"),
     path("newbook/", views.NewBook.as_view(), name="newbook"),
     path("books/<int:id>/", views.book, name="book"),
+    path("addbook/<int:id>", views.addbook, name='addbook'),
+    path("delbook/<int:id>", views.delbook, name='delbook'),
     path("admin/", admin.site.urls),
     path("accounts/", include("django.contrib.auth.urls")),
+    path('register', views.register, name='register'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

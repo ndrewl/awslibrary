@@ -6,4 +6,12 @@
     <div>Author: {{ book.author }}</div>
     <div>Goodreads link: {{ book.goodreads_link }}</div>
 </div>
+
+<div>
+{% if is_in_my_books %}
+<a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
+{% else %}
+<a href="{% url 'addbook' id=book.id %}">Добавить в список моих книг</a>
+</div>
+{% endif %}
 {% endblock %}

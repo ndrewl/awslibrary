@@ -3,9 +3,25 @@ from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from library.models import Author, Book, BookLink
-from library.forms import MyForm
+from library.models import Author, Book, BookLink, Profile
+from library.forms import NewBookForm, RegistrationForm
 from django.shortcuts import redirect
+
+
+def register(request):
+    if request.method == "POST":
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = User.objects.create_user(
+                username=form.cleaned_data["username"],
+                password=form.cleaned_data["password1"],
+            )
+            Profile.objects.create(user=user)
+            return redirect("mybooks")
+        else:
+            return render(request, "registration/register.html", {"form": form},)
+
+    return render(request, "registration/register.html", {"form": RegistrationForm()})
 
 
 @login_required
@@ -29,12 +45,35 @@ def allbooks(request):
 
 @login_required
 def book(request, id):
-    context = {"book": Book.objects.get(id=id)}
+    book = Book.objects.get(id=id)
+    user = User.objects.get(id=request.user.id)
+    context = {
+        "book": book,
+        "is_in_my_books": BookLink.objects.filter(book=book, user=user).exists(),
+    }
     return render(request, "library/book.html", context)
 
 
+@login_required
+def addbook(request, id):
+    book = Book.objects.get(id=id)
+    user = User.objects.get(id=request.user.id)
+    link = BookLink(book=book, user=user)
+    link.save()
+    return redirect("mybooks")
+
+
+@login_required
+def delbook(request, id):
+    book = Book.objects.get(id=id)
+    user = User.objects.get(id=request.user.id)
+    link = BookLink.objects.get(book=book, user=user)
+    link.delete()
+    return redirect("mybooks")
+
+
 class NewBook(View):
-    form_class = MyForm
+    form_class = NewBookForm
     template_name = "library/newbook.html"
 
     @method_decorator(login_required)
