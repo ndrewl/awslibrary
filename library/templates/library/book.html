@@ -2,16 +2,16 @@
 
 {% block content %}
 <div class='book-info'>
-    <div>Title: {{ book.title }}</div>
-    <div>Author: {{ book.author }}</div>
-    <div>Goodreads link: {{ book.goodreads_link }}</div>
-</div>
-
-<div>
-{% if is_in_my_books %}
-<a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
-{% else %}
-<a href="{% url 'addbook' id=book.id %}">Добавить в список моих книг</a>
+    <div>Название: {{ book.title }}</div>
+    <div>Автор: {{ book.author }}</div>
+    <div>Ссылка на Goodreads: <a href="{{ book.goodreads_link }}">{{ book.goodreads_link }}</a></div>
+    <div>Ссылка на файл: <a href="{{ book.file.url }}">{{ book.file.url }}</a></div>
+    <div class='book-action'>
+        {% if is_in_my_books %}
+        <a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
+        {% else %}
+        <a href="{% url 'addbook' id=book.id %}">Добавить в список моих книг</a>
+    </div>
 </div>
 {% endif %}
 {% endblock %}

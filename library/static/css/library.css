@@ -217,3 +217,25 @@ Style for the main content block
     width: 75%;
     margin: auto;
 }
+
+
+/*
+Style for the book info card
+*/
+.book-info {
+    color: #354F00;
+    border: 3px solid #567714;
+    background-color: #D4EE9F;
+    width: fit-content;
+    margin: auto;
+    padding: 1.5rem;
+    font-size: 2rem;
+}
+
+.book-info div {
+    padding: 1rem;
+}
+
+.book-info .book-action {
+    margin-top: 2rem;
+}
