@@ -110,10 +110,7 @@ a:hover {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem;
     width: 75%;
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%);
-    overflow: auto;
+    margin: auto;
 }
 
 .main-menu {
