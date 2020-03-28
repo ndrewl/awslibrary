@@ -8,7 +8,7 @@
 
 <body>
     <div class='header'>
-        <a href='/'>Моя библиотека</a>
+        <a href="{% url 'mybooks' %}">Моя библиотека</a>
     </div>
 
     <div class="main-menu">
@@ -31,7 +31,6 @@
             </li>
         </ul>
     </div>
-
 
     <div class='content'>
         {% block content %}

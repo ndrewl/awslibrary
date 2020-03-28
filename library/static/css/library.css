@@ -1,23 +1,44 @@
+/*
+Color palette URL: http://paletton.com/#uid=52m0u0kllllaFw0g0qFqFg0w0aF
+*/
+
+/* Set the base font size */
 html {
     font-size: 10px;
 }
 
-button, 
-input, 
-select, 
-textarea { 
+
+/*
+Reset form elements so they look the same across different browsers
+(https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
+*/
+button,
+input,
+select,
+textarea {
     font-family: inherit;
-    font-size: 100%; 
-    box-sizing: border-box; 
-    padding: 0; margin: 0; 
+    font-size: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
+textarea {
+    overflow: auto;
+}
+
+
+/*
+Styles for tables
+(https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
+*/
 table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
-    border: 3px solid green;
+    border: 3px solid #567714;
     font-size: 1.5rem;
+    color: #354F00;
 }
 
 thead th:nth-child(1) {
@@ -48,54 +69,77 @@ tfoot th {
     text-align: right;
 }
 
-thead th, tfoot th, tfoot td {
-    background-color: #7E9F35;
-    
+thead th,
+tfoot th,
+tfoot td {
+    background-color: #D4EE9F;
 }
+
 thead th {
-    border: 3px solid #374F00;
+    border: 2px solid #567714;
 }
 
 tbody tr:nth-child(odd) {
-    background-color: #A8C663;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #D6EE9F;
-  }
+    background-color: #D4EE9F;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #A5C663;
+}
 
 caption {
     font-family: cursive;
     padding: 20px;
     font-style: italic;
     caption-side: bottom;
-    color: #666;
+    color: #354F00;
     text-align: right;
     letter-spacing: 1px;
 }
 
+
+/*
+Styles for links
+(https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links)
+*/
+a {
+    text-decoration: none;
+    color: #116611;
+}
+
+a:hover {
+    background-color: #88CC88;
+}
+
+
+/*
+Styles for form elements
+(https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
+*/
+input {
+    margin-bottom: 1.5rem;
+}
+label {
+    display: block;
+}
+
+input[type=submit] {
+    display: block;
+}
+
+
+/*
+Style for the site title
+*/
 .header {
-    width: 100%;
-    box-sizing: border-box;
     padding: 1.5rem;
     font-size: 5rem;
 }
 
-a {
-    text-decoration: none;
-    color: green;
-}
-a:hover {
-    background-color: yellow;
-}
 
-.content {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 2rem;
-    width: 75%;
-    margin: auto;
-}
-
+/*
+Styles for the menu bar (list of links)
+*/
 .main-menu {
     text-align: center;
     font-size: 2rem;
@@ -118,33 +162,36 @@ a:hover {
     margin-right: 0.625%;
     text-align: center;
     line-height: 3;
-    color: black;
+    color: #555500;
 }
 
 .main-menu li:last-child a {
     margin-right: 0;
 }
 
-.main-menu a:link, .main-menu a:visited, .main-menu a:focus {
-    background: purple;
+.main-menu a:link,
+.main-menu a:visited,
+.main-menu a:focus {
+    background: #FFFFAA;
 }
 
-.main-menu a:hover {     
-    background: orange;
+.main-menu a:hover {
+    background: #D4D46A;
 }
 
 .main-menu a:active {
-    background: red;
-    color: white;
+    background: #555500;
+    color: #FFFFAA;
 }
 
-input {
-    margin-bottom: 1.5rem;
-}
-label {
-    display: block;
-}
 
-input[type=submit] {
-    display: block;
+/*
+Style for the main content block
+*/
+.content {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 2rem;
+    /* position in the center */
+    width: 75%;
+    margin: auto;
 }
