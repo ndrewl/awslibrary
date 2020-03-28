@@ -17,16 +17,16 @@ def validate_file_size(value):
 
 
 class NewBookForm(forms.Form):
-    author = forms.CharField(max_length=500, required=True)
-    title = forms.CharField(max_length=1000, required=True)
-    goodreads_link = forms.URLField(required=False)
-    file = forms.FileField(validators=[validate_file_size])
+    author = forms.CharField(label='Автор', max_length=500, required=True)
+    title = forms.CharField(label='Название', max_length=1000, required=True)
+    goodreads_link = forms.URLField(label='Ссылка на Goodreads', required=False)
+    file = forms.FileField(label='Файл (желательно epub)', validators=[validate_file_size])
 
 
 class RegistrationForm(forms.Form):
-    username = forms.CharField(label="Username", max_length=30)
-    password1 = forms.CharField(label="Password", widget=forms.PasswordInput())
-    password2 = forms.CharField(label="Password (Again)", widget=forms.PasswordInput())
+    username = forms.CharField(label="Логин", max_length=30)
+    password1 = forms.CharField(label="Пароль", widget=forms.PasswordInput())
+    password2 = forms.CharField(label="Пароль (снова)", widget=forms.PasswordInput())
 
     def clean_password2(self):
         if "password1" in self.cleaned_data:

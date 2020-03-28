@@ -116,15 +116,37 @@ a:hover {
 Styles for form elements
 (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
 */
+fieldset {
+    color: #354F00;
+    border: 3px solid #567714;
+    background-color: #D4EE9F;
+    width: fit-content;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+form {
+    width: fit-content;
+    margin:auto;
+    font-size: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
 input {
     margin-bottom: 1.5rem;
 }
-label {
-    display: block;
-}
 
-input[type=submit] {
+fieldset input[type=submit] {
     display: block;
+    margin-top: 2rem;
+    padding: 4px;
+    background: #FFFFAA;
+    cursor: pointer;
+    border: 1px solid #567714;;
 }
 
 

@@ -1,9 +1,12 @@
 {% extends 'library/base.html' %}
 
 {% block content %}
-<form action="{% url 'newbook' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="Submit">
-</form>
+<fieldset>
+    <legend>Новая книга</legend>
+    <form action="{% url 'newbook' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Добавить">
+    </form>
+</fieldset>
 {% endblock %}
