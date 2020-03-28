@@ -76,26 +76,9 @@ caption {
 
 .header {
     width: 100%;
-    margin-bottom: 5rem;
-}
-
-.site-title {
-    width: 50%;
-    display: inline-block;
     box-sizing: border-box;
+    padding: 1.5rem;
     font-size: 5rem;
-    /* padding: 1rem; */
-}
-
-.auth-links {
-    width: 50%;
-    text-align: right;
-    /* padding:1rem; */
-    /* position: fixed; */
-    /* right: 0%; */
-    display: inline-block;
-    box-sizing: border-box;
-    font-size: 2rem;
 }
 
 a {
