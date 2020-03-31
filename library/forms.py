@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
 # Maximum allowed file size in MB
-MAX_BOOK_FILE_SIZE = 10
+MAX_BOOK_FILE_SIZE = 100
 
 
 def validate_file_size(value):
