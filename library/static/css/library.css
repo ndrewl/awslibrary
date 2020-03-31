@@ -202,6 +202,7 @@ Styles for the menu bar (list of links)
     text-decoration: none;
     padding: 1.5rem;
     text-align: center;
+    border: 1px #004400 solid;
 }
 
 .main-menu a:link,
