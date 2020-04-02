@@ -39,7 +39,11 @@ def mybooks(request):
 
 @login_required
 def allbooks(request):
-    context = {"books": Book.objects.order_by("-id")}
+    context = {
+        "books": Book.objects.filter(
+            review_status=Book.ReviewStatusChoice.REVIEW_ACCEPTED
+        ).order_by("-id")
+    }
     return render(request, "library/allbooks.html", context)
 
 
@@ -86,6 +90,7 @@ class NewBook(View):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
+            user = User.objects.get(id=request.user.id)
             author, created = Author.objects.get_or_create(
                 name=form.cleaned_data["author"],
             )
@@ -95,8 +100,8 @@ class NewBook(View):
                 goodreads_link=form.cleaned_data["goodreads_link"],
             )
             newBook.file = request.FILES["file"]
+            newBook.uploaded_by = user
             newBook.save()
-            user = User.objects.get(id=request.user.id)
             newLink, created = BookLink.objects.get_or_create(book=newBook, user=user)
             return redirect("book", id=newBook.id)
         return render(request, self.template_name, {"form": form})

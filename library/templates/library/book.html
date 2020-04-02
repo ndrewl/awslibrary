@@ -8,6 +8,14 @@
     <div><a href="{{ book.goodreads_link }}">Ссылка на Goodreads</a></div>
     {% endif %}
     <div><a href="{{ book.file.url }}">Ссылка на файл</a></div>
+    <div>Статус ревью: {{ book.review_status }}</div>
+    <div>Ревьюер:
+        {% if book.reviewer %}
+        <a href="mailto:{{ book.reviewer.email }}">{{ book.reviewer }}</a>
+        {% else %}
+        не назначен
+        {% endif %}
+    </div>
     <div class='book-action'>
         {% if is_in_my_books %}
         <a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
