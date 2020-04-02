@@ -30,7 +30,7 @@ book_reject.short_description = "Reject selected books"
 
 class BookAdmin(admin.ModelAdmin):
     list_display = ("author", "title", "uploaded_by", "review_status")
-    list_filter = ("review_status", "reviewer")
+    list_filter = ("review_status", "reviewer", "uploaded_by")
     actions = (book_accept, book_reject)
 
 
