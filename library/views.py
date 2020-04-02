@@ -94,13 +94,13 @@ class NewBook(View):
             author, created = Author.objects.get_or_create(
                 name=form.cleaned_data["author"],
             )
-            newBook, created = Book.objects.get_or_create(
+            newBook = Book(
                 author=author,
                 title=form.cleaned_data["title"],
                 goodreads_link=form.cleaned_data["goodreads_link"],
+                file=request.FILES["file"],
+                uploaded_by=user
             )
-            newBook.file = request.FILES["file"]
-            newBook.uploaded_by = user
             newBook.save()
             newLink, created = BookLink.objects.get_or_create(book=newBook, user=user)
             return redirect("book", id=newBook.id)
