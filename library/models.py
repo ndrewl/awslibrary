@@ -31,6 +31,7 @@ class Book(models.Model):
     class LanguageChoice(models.TextChoices):
         RUSSIAN = "Russian", _("Russian")
         ENGLISH = "English", _("English")
+        FRENCH = "French", _("French")
 
     title = models.CharField(max_length=1000, blank=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)

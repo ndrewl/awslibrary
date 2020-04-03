@@ -4,12 +4,12 @@
 <div class='book-info'>
     <div>Название: {{ book.title }}</div>
     <div>Автор: {{ book.author }}</div>
+    <div>Язык: {{ book.language }}</div>
     {% if book.goodreads_link %}
     <div><a href="{{ book.goodreads_link }}">Ссылка на Goodreads</a></div>
     {% endif %}
     <div><a href="{{ book.file.url }}">Ссылка на файл</a></div>
-    <div>Статус ревью: {{ book.review_status }}</div>
-    <div>Ревьюер:
+    <div>Статус ревью: {{ book.review_status }}, ревьюер:
         {% if book.reviewer %}
         <a href="mailto:{{ book.reviewer.email }}">{{ book.reviewer }}</a>
         {% else %}
