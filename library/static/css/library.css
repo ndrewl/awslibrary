@@ -43,8 +43,7 @@ table {
     width: 100%;
     font-size: 1.5rem;
     border-collapse: collapse;
-    border-width: 3px;
-    border-style: solid;
+    border: 2px solid #004400;
     min-width: 60rem;
 }
 
@@ -84,8 +83,7 @@ tfoot td {
 }
 
 thead th {
-    border-width: 2px;
-    border-style: solid;
+    border: 2px solid #004400;
 }
 
 tbody tr:nth-child(odd) {
@@ -130,7 +128,15 @@ fieldset {
     border-style: solid;
     margin: auto;
     padding: 1.5rem;
-    width: fit-content;
+    width: 30rem;
+    border: 1px #004400 solid;
+    background-color: #FFFFAA;
+}
+
+fieldset legend {
+    padding: 5px;
+    color: #116611;
+    font-weight: bold;;
 }
 
 form {
@@ -142,19 +148,27 @@ form {
 label {
     display: block;
     margin-bottom: 0.5rem;
+    color: #567714;
 }
 
 input {
     margin-bottom: 1.5rem;
+    padding: 0.5rem;
+    border: 1px #004400 solid;
+    width: 100%;
+    border-radius: 0.7rem;
 }
 
 fieldset input[type=submit] {
     display: block;
-    margin-top: 2rem;
-    padding: 4px;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding: 0.5rem;
     cursor: pointer;
     border-width: 1px;
     border-style: solid;
+    background-color: #555500;
+    color: #D4D46A;
 }
 
 /*
