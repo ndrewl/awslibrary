@@ -28,6 +28,10 @@ class Book(models.Model):
         REVIEW_ACCEPTED = "Accepted", _("Accepted")
         REVIEW_REJECTED = "Rejected", _("Rejected")
 
+    class LanguageChoice(models.TextChoices):
+        RUSSIAN = "Russian", _("Russian")
+        ENGLISH = "English", _("English")
+
     title = models.CharField(max_length=1000, blank=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     goodreads_link = models.URLField(blank=True)
@@ -40,7 +44,10 @@ class Book(models.Model):
     uploaded_by = models.ForeignKey(
         User, related_name="uploaded_by", on_delete=models.SET_NULL, null=True
     )
-    reviewer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    reviewer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, blank=True)
+    language = models.CharField(
+        choices=LanguageChoice.choices, max_length=100, null=True
+    )
 
     def __str__(self):
         return f"{self.author.name} - {self.title}"
