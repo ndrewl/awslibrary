@@ -129,20 +129,23 @@ fieldset {
     margin: auto;
     padding: 1.5rem;
     width: 30rem;
-    border: 1px #004400 solid;
+    border: 2px solid #004400;
     background-color: #FFFFAA;
 }
 
 fieldset legend {
     padding: 5px;
     color: #116611;
-    font-weight: bold;;
+    font-weight: bold;
+    border: 2px solid #004400;
+    background-color: #FFFFAA;
+    text-align: center;
+    font-size: 2rem;
 }
 
 form {
     width: fit-content;
     margin:auto;
-    font-size: 1.5rem;
 }
 
 label {
@@ -153,8 +156,8 @@ label {
 
 input {
     margin-bottom: 1.5rem;
-    padding: 0.5rem;
-    border: 1px #004400 solid;
+    padding: 1rem;
+    border: 1px solid #004400;
     width: 100%;
     border-radius: 0.7rem;
 }
@@ -163,7 +166,7 @@ fieldset input[type=submit] {
     display: block;
     margin-top: 1rem;
     margin-bottom: 2rem;
-    padding: 0.5rem;
+    padding: 1rem;
     cursor: pointer;
     border-width: 1px;
     border-style: solid;
@@ -198,8 +201,8 @@ Styles for the menu bar (list of links)
 .main-menu {
     font-size: 2rem;
     margin: auto;
-    border-top: 2px #004400 solid;
-    border-bottom: 2px #004400 solid;
+    border-top: 2px solid #004400;
+    border-bottom: 2px solid #004400;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
@@ -213,7 +216,7 @@ Styles for the menu bar (list of links)
     text-decoration: none;
     padding: 1.5rem;
     text-align: center;
-    border: 1px #004400 solid;
+    border: 1px solid #004400;
 }
 
 .main-menu a:link,
@@ -238,7 +241,7 @@ Style for the main content block
 */
 .content {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: auto;
     overflow: auto;
 }
