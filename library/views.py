@@ -26,24 +26,23 @@ def register(request):
 
 @login_required
 def mybooks(request):
-    context = {
-        "books": [
-            link.book
-            for link in BookLink.objects.filter(user__id=request.user.id).order_by(
-                "-id"
-            )
-        ]
-    }
+    book_links = BookLink.objects.filter(user__id=request.user.id)
+    language = request.GET.get("language", None)
+    if language is not None:
+        book_links = book_links.filter(book__language=language)
+
+    context = {"books": [link.book for link in book_links.order_by("-id")]}
     return render(request, "library/mybooks.html", context)
 
 
 @login_required
 def allbooks(request):
-    context = {
-        "books": Book.objects.filter(
-            review_status=Book.ReviewStatusChoice.REVIEW_ACCEPTED
-        ).order_by("-id")
-    }
+    books = Book.objects.filter(review_status=Book.ReviewStatusChoice.REVIEW_ACCEPTED)
+    language = request.GET.get("language", None)
+    if language is not None:
+        books = books.filter(language=language)
+
+    context = {"books": books.order_by("-id")}
     return render(request, "library/allbooks.html", context)
 
 
@@ -98,7 +97,8 @@ class NewBook(View):
                 author=author,
                 title=form.cleaned_data["title"],
                 goodreads_link=form.cleaned_data["goodreads_link"],
-                uploaded_by=user
+                uploaded_by=user,
+                language=form.cleaned_data["language"],
             )
             newBook.save()
             newBook.file = request.FILES["file"]

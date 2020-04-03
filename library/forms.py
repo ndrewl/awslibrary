@@ -3,6 +3,7 @@ from django import forms
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from library.models import Book
 
 # Maximum allowed file size in MB
 MAX_BOOK_FILE_SIZE = 100
@@ -19,6 +20,7 @@ def validate_file_size(value):
 class NewBookForm(forms.Form):
     author = forms.CharField(label='Автор', max_length=500, required=True)
     title = forms.CharField(label='Название', max_length=1000, required=True)
+    language = forms.ChoiceField(choices=Book.LanguageChoice.choices, required=True)
     goodreads_link = forms.URLField(label='Ссылка на Goodreads', required=False)
     file = forms.FileField(label='Файл (желательно epub)', validators=[validate_file_size])
 

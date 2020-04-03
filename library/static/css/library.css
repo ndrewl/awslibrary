@@ -150,6 +150,7 @@ form {
 
 label {
     display: block;
+    margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     color: #567714;
 }
@@ -172,6 +173,11 @@ fieldset input[type=submit] {
     border-style: solid;
     background-color: #555500;
     color: #D4D46A;
+}
+
+fieldset select {
+    padding: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 /*
@@ -253,6 +259,10 @@ Style for the main content block
     .content {
         width: 75%;
     }
+}
+
+.language-list {
+    margin-bottom: 1rem;
 }
 
 

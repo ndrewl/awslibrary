@@ -4,7 +4,9 @@
 <div class='book-info'>
     <div>Название: {{ book.title }}</div>
     <div>Автор: {{ book.author }}</div>
+    {% if book.language %}
     <div>Язык: {{ book.language }}</div>
+    {% endif %}
     {% if book.goodreads_link %}
     <div><a href="{{ book.goodreads_link }}">Ссылка на Goodreads</a></div>
     {% endif %}
