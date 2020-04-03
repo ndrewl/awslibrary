@@ -101,7 +101,7 @@ class NewBook(View):
                 uploaded_by=user
             )
             newBook.save()
-            newBook.file = request.FILES["file"],
+            newBook.file = request.FILES["file"]
             newBook.save()
             newLink, created = BookLink.objects.get_or_create(book=newBook, user=user)
             return redirect("book", id=newBook.id)
