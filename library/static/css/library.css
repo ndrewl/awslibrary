@@ -45,6 +45,7 @@ table {
     border-collapse: collapse;
     border-width: 3px;
     border-style: solid;
+    min-width: 60rem;
 }
 
 thead th:nth-child(1) {
@@ -225,6 +226,7 @@ Style for the main content block
     font-family: Helvetica, Arial, sans-serif;
     font-size: 2rem;
     margin: auto;
+    overflow: auto;
 }
 
 @media (min-width: 1000px) {
