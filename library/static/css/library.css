@@ -141,6 +141,7 @@ fieldset legend {
     background-color: #FFFFAA;
     text-align: center;
     font-size: 2rem;
+    margin: auto;
 }
 
 form {
