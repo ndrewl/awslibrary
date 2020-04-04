@@ -1,11 +1,12 @@
+from functools import wraps
 from django.shortcuts import render
 from django.views import View
 from django.utils.decorators import method_decorator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 from library.models import Author, Book, BookLink, Profile
 from library.forms import NewBookForm, RegistrationForm
-from django.shortcuts import redirect
 
 
 def register(request):
@@ -24,7 +25,26 @@ def register(request):
     return render(request, "registration/register.html", {"form": RegistrationForm()})
 
 
+def user_has_permission(permission):
+    def decorator(view_func):
+        @wraps(view_func)
+        def _wrapped_view(request, *args, **kwargs):
+            profile = Profile.objects.get(user=request.user)
+            if permission == "download" and not profile.can_download_books:
+                return render(request, "library/nopermission.html")
+
+            if permission == "upload" and not profile.can_upload_books:
+                return render(request, "library/nopermission.html")
+
+            return view_func(request, *args, **kwargs)
+
+        return _wrapped_view
+
+    return decorator
+
+
 @login_required
+@user_has_permission("download")
 def mybooks(request):
     book_links = BookLink.objects.filter(user__id=request.user.id)
     language = request.GET.get("language", None)
@@ -36,6 +56,7 @@ def mybooks(request):
 
 
 @login_required
+@user_has_permission("download")
 def allbooks(request):
     books = Book.objects.filter(review_status=Book.ReviewStatusChoice.REVIEW_ACCEPTED)
     language = request.GET.get("language", None)
@@ -47,6 +68,7 @@ def allbooks(request):
 
 
 @login_required
+@user_has_permission("download")
 def book(request, id):
     book = Book.objects.get(id=id)
     user = User.objects.get(id=request.user.id)
@@ -54,10 +76,12 @@ def book(request, id):
         "book": book,
         "is_in_my_books": BookLink.objects.filter(book=book, user=user).exists(),
     }
+
     return render(request, "library/book.html", context)
 
 
 @login_required
+@user_has_permission("download")
 def addbook(request, id):
     book = Book.objects.get(id=id)
     user = User.objects.get(id=request.user.id)
@@ -67,6 +91,7 @@ def addbook(request, id):
 
 
 @login_required
+@user_has_permission("download")
 def delbook(request, id):
     book = Book.objects.get(id=id)
     user = User.objects.get(id=request.user.id)
@@ -80,6 +105,7 @@ class NewBook(View):
     template_name = "library/newbook.html"
 
     @method_decorator(login_required)
+    @method_decorator(user_has_permission("upload"))
     def dispatch(self, *args, **kwargs):
         return super().dispatch(*args, **kwargs)
 

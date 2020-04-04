@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    can_download_books = models.BooleanField(default=False)
+    can_upload_books = models.BooleanField(default=False)
 
     def __str__(self):
         return self.user.username
