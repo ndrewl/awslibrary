@@ -4,15 +4,9 @@ Color palette URL: http://paletton.com/#uid=52m0u0kllllaFw0g0qFqFg0w0aF
 
 /* Set the base font size */
 html {
-    font-size: 20px;
+    font-size: 10px;
 }
 
-/* Set font size for wide screens */
-@media (min-width: 1000px) {
-    html {
-        font-size: 10px;
-    }
-}
 
 /*
 Reset form elements so they look the same across different browsers
@@ -64,7 +58,7 @@ thead th:nth-child(4) {
 }
 
 th, td {
-    padding: 10px;
+    padding: 1rem;
 }
 
 tbody td {
@@ -96,11 +90,11 @@ tbody tr:nth-child(even) {
 
 caption {
     font-family: cursive;
-    padding: 20px;
+    padding: 2rem;
     font-style: italic;
     caption-side: bottom;
     text-align: right;
-    letter-spacing: 1px;
+    letter-spacing: 0.1rem;
 }
 
 
@@ -124,8 +118,6 @@ Styles for form elements
 (https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements)
 */
 fieldset {
-    border-width: 3px;
-    border-style: solid;
     margin: auto;
     padding: 1.5rem;
     width: 30rem;
@@ -134,7 +126,7 @@ fieldset {
 }
 
 fieldset legend {
-    padding: 5px;
+    padding: 1rem;
     color: #116611;
     font-weight: bold;
     border: 2px solid #004400;
@@ -170,8 +162,7 @@ fieldset input[type=submit] {
     margin-bottom: 2rem;
     padding: 1rem;
     cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
+    border: 1px solid #004400;
     background-color: #555500;
     color: #D4D46A;
 }
