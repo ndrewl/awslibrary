@@ -7,39 +7,23 @@
     <a href='?language=English'>английском</a>,
     <a href='?language=French'>французском</a>.
 </div>
-<table>
-    <caption>Все книги</caption>
-    <thead>
-        <tr>
-            <th scope='col'>Название</th>
-            <th scope='col'>Автор</th>
-            <th scope='col'>Ссылка (информация)</th>
-            <th scope='col'>Ссылка (для скачивания)</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for book in books %}
-        <tr>
-            <th scope='row'><a href={% url 'book' id=book.id %}>{{ book.title }}</a></th>
-            <td>{{ book.author }}</td>
-            <td>
-                {% if book.goodreads_link %}
-                <a href="{{ book.goodreads_link }}">info</a>
-                {% endif %}
-            </td>
-            <td>
-                {% if book.file %}
-                <a href="{{ book.file.url }}">download</a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <th scope='row' colspan='2'>Всего книг</th>
-            <td colspan='2'>{{ books | length }}</td>
-        </tr>
-    </tfoot>
-</table>
+
+<h2>Все книги ({{ books | length }})</h2>
+<dl>
+    {% for book in books %}
+    <div class='book-card'>
+        <dt><strong><a href={% url 'book' id=book.id %}>{{ book.title }}</a></strong></dt>
+        <dd>Автор: {{ book.author }}</dd>
+        {% if book.language %}
+        <dd>Язык: {{ book.language }}</dd>
+        {% endif %}
+        {% if book.goodreads_link %}
+        <dd><a href="{{ book.goodreads_link }}">Goodreads</a></dd>
+        {% endif %}
+        {% if book.file %}
+        <dd><a href="{{ book.file.url }}">Скачать</a></dd>
+        {% endif %}
+    </div>
+    {% endfor %}
+</dl>
 {% endblock %}

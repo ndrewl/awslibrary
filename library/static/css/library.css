@@ -2,11 +2,14 @@
 Color palette URL: http://paletton.com/#uid=52m0u0kllllaFw0g0qFqFg0w0aF
 */
 
+* {
+    box-sizing: border-box;
+}
+
 /* Set the base font size */
 html {
     font-size: 10px;
 }
-
 
 /*
 Reset form elements so they look the same across different browsers
@@ -27,91 +30,120 @@ textarea {
     overflow: auto;
 }
 
-
-/*
-Styles for tables
-(https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Styling_tables)
-*/
-table {
-    table-layout: fixed;
-    width: 100%;
-    font-size: 1.5rem;
-    border-collapse: collapse;
-    border: 2px solid #004400;
-    min-width: 60rem;
+@media(min-width: 1024px) {
+    body {
+        width: 75%;
+        margin: auto;
+    }
 }
 
-thead th:nth-child(1) {
-    width: 30%;
-}
-
-thead th:nth-child(2) {
-    width: 30%;
-}
-
-thead th:nth-child(3) {
-    width: 20%;
-}
-
-thead th:nth-child(4) {
-    width: 20%;
-}
-
-th, td {
-    padding: 1rem;
-}
-
-tbody td {
-    text-align: center;
-}
-
-tfoot th {
-    text-align: right;
-}
-
-thead th,
-tfoot th,
-tfoot td {
-    background-color: #FFFFAA;
+a {
     color: #116611;
 }
 
-thead th {
-    border: 2px solid #004400;
+.header {
+    display: grid;
+    grid-template-columns: repeat(12, [col-start] 1fr);
+    grid-gap: 20px;
+    margin: 0 0 2rem 0;
+}
+.header > * {
+    grid-column: col-start / span 12;
 }
 
-tbody tr:nth-child(odd) {
-    background-color: #D4D46A;
+.header .title {
+    font-size: 3rem;
+    text-align: center;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #FFFFAA;
-}
-
-caption {
-    font-family: cursive;
-    padding: 2rem;
-    font-style: italic;
-    caption-side: bottom;
-    text-align: right;
-    letter-spacing: 0.1rem;
-}
-
-
-
-/*
-Styles for links
-(https://developer.mozilla.org/en-US/docs/Learn/CSS/Styling_text/Styling_links)
-*/
-a {
-    text-decoration: none;
+.header .title a {
     color: #567714;
 }
 
-a:hover {
-    text-decoration-line: underline;
+.main-menu .menu-item {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
+.main-menu .menu-item a {
+    display: inline-block;
+    width: 100%;
+    padding: 0.5rem;
+    text-decoration: none;
+    border: 1px solid #004400;
+}
+
+.main-menu .menu-item a:link,
+.main-menu .menu-item a:visited,
+.main-menu .menu-item a:focus {
+    background-color: #555500;
+    color: #D4D46A;
+}
+
+.main-menu .menu-item a:hover {
+    background-color: #116611;
+}
+
+.main-menu .menu-item a:active {
+    background-color: #D4D46A;
+    color: #116611;
+}
+
+@media (min-width: 512px) {
+    .main-menu {
+        display: flex;
+        flex-flow: row wrap;
+        align-items: center;
+        justify-content: space-around;
+    }
+    .main-menu .menu-item {
+        flex: 1 1;
+        min-width: 15rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .header .title {
+        grid-column: col-start / span 4;
+        grid-row: 1;
+        text-align: left;
+    }
+    .header .main-menu {
+        grid-column: col-start 5 / span 8;
+        grid-row: 1;
+        justify-content: flex-end;
+    }
+    .header .main-menu .menu-item {
+        min-width: 15rem;
+        max-width: 15rem;
+    }
+}
+
+.content {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
+    margin: auto;
+    overflow: auto;
+}
+
+.book-card {
+    border: 2px solid #004400;
+    background-color: #FFFFAA;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+@media(min-width: 512px) {
+    dl {
+        display: grid;
+        grid-template-columns: repeat( auto-fit, minmax(20rem, 1fr) );
+        grid-gap: 1rem;
+    }
+    .book-card {
+        margin: 0;
+    }
+}
 
 /*
 Styles for form elements
@@ -119,7 +151,7 @@ Styles for form elements
 */
 fieldset {
     margin: auto;
-    padding: 1.5rem;
+    padding: 1rem;
     width: 30rem;
     border: 2px solid #004400;
     background-color: #FFFFAA;
@@ -132,7 +164,7 @@ fieldset legend {
     border: 2px solid #004400;
     background-color: #FFFFAA;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin: auto;
 }
 
@@ -173,92 +205,6 @@ fieldset select {
 }
 
 /*
-Style for the site top
-*/
-.header {
-    padding: 1.5rem;
-}
-
-
-/*
-Style for the site title
-*/
-.title {
-    text-align: center;
-    font-size: 5rem;
-    margin-bottom: 2rem;
-}
-.title a {
-    color: #567714
-}
-
-
-/*
-Styles for the menu bar (list of links)
-*/
-.main-menu {
-    font-size: 2rem;
-    margin: auto;
-    border-top: 2px solid #004400;
-    border-bottom: 2px solid #004400;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.main-menu a {
-    flex: 1 15rem;
-    margin: 1rem;
-    line-height: 3rem;
-    text-decoration: none;
-    padding: 1.5rem;
-    text-align: center;
-    border: 1px solid #004400;
-}
-
-.main-menu a:link,
-.main-menu a:visited,
-.main-menu a:focus {
-    background-color: #555500;
-    color: #D4D46A;
-}
-
-.main-menu a:hover {
-    background-color: #116611;
-}
-
-.main-menu a:active {
-    background-color: #D4D46A;
-    color: #116611;
-}
-
-
-/*
-Style for the main content block
-*/
-.content {
-    font-family: Helvetica, Arial, sans-serif;
-    font-size: 1.5rem;
-    margin: auto;
-    overflow: auto;
-}
-
-@media (min-width: 1000px) {
-    .main-menu {
-        width: 75%;
-    }
-    .content {
-        width: 75%;
-    }
-}
-
-.language-list {
-    margin-bottom: 1rem;
-}
-
-
-/*
 Style for the book info card
 */
 .book-info {
@@ -267,20 +213,20 @@ Style for the book info card
     border-style: solid;
 
     margin: auto;
-    padding: 1.5rem;
-    font-size: 2rem;
+    padding: 1rem;
+    font-size: 1.5rem;
     width: 100%;
 }
 
 .book-info div {
-    padding: 1rem;
+    padding: 0.5rem;
 }
 
 .book-info .book-action {
-    margin-top: 2rem;
+    margin-top: 1rem;
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1024px) {
     .book-info {
         width: fit-content;
     }
