@@ -134,10 +134,18 @@ a {
     padding: 1rem;
 }
 
+dl dt {
+    margin-block-end: 1.5rem;
+}
+
+dl dd {
+    margin-inline-start: 0px;
+}
+
 @media(min-width: 512px) {
     dl {
         display: grid;
-        grid-template-columns: repeat( auto-fit, minmax(20rem, 1fr) );
+        grid-template-columns: repeat( auto-fit, minmax(25rem, 1fr) );
         grid-gap: 1rem;
     }
     .book-card {
