@@ -2,6 +2,7 @@ import os
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
+import storages.backends.s3boto3
 
 
 class Profile(models.Model):
@@ -24,6 +25,13 @@ def _get_updload_file_path(instance, filename):
     return os.path.join(str(instance.id), filename)
 
 
+protected_storage = storages.backends.s3boto3.S3Boto3Storage(
+    acl="private",
+    querystring_auth=True,
+    querystring_expire=300,
+)
+
+
 class Book(models.Model):
     class ReviewStatusChoice(models.TextChoices):
         REVIEW_PENDING = "Pending", _("Pending")
@@ -38,7 +46,12 @@ class Book(models.Model):
     title = models.CharField(max_length=1000, blank=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     goodreads_link = models.URLField(blank=True)
-    file = models.FileField(null=True, blank=True, upload_to=_get_updload_file_path)
+    file = models.FileField(
+        null=True,
+        blank=True,
+        upload_to=_get_updload_file_path,
+        storage=protected_storage,
+    )
     review_status = models.CharField(
         choices=ReviewStatusChoice.choices,
         max_length=100,
