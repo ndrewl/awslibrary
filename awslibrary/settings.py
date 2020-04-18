@@ -129,6 +129,8 @@ STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = True
 AWS_DEFAULT_ACL = 'private'
+AWS_S3_HOST = 'eu-central-1'
+S3_USE_SIGV4 = True
 
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
