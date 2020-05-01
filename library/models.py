@@ -4,6 +4,11 @@ from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _
 import storages.backends.s3boto3
 
+class PrefixedStorage(storages.backends.s3boto3.S3Boto3Storage):
+  def __init__(self, *args, **kwargs):
+    from django.conf import settings
+    kwargs['location'] = settings.ASSETS_PREFIX
+    return super(PrefixedStorage, self).__init__(*args, **kwargs)
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)

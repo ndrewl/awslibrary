@@ -125,7 +125,8 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+ASSETS_PREFIX = 'assets'
+STATICFILES_STORAGE = 'library.models.PrefixedStorage'
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = True
 AWS_DEFAULT_ACL = 'private'
