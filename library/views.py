@@ -67,14 +67,24 @@ def allbooks(request):
     return render(request, "library/allbooks.html", context)
 
 
-@login_required
-@user_has_permission("download")
 def book(request, id):
     book = Book.objects.get(id=id)
-    user = User.objects.get(id=request.user.id)
+
+    full_info_visible = False
+    download_links_visible = False
+    in_my_books = None
+
+    if request.user.is_authenticated:
+        full_info_visible = True
+        profile = Profile.objects.get(user=request.user)
+        download_links_visible = profile.can_download_books
+        in_my_books = BookLink.objects.filter(book=book, user=request.user).exists()
+
     context = {
         "book": book,
-        "is_in_my_books": BookLink.objects.filter(book=book, user=user).exists(),
+        "full_info_visible": full_info_visible,
+        "download_links_visible": download_links_visible,
+        "in_my_books": in_my_books,
     }
 
     return render(request, "library/book.html", context)

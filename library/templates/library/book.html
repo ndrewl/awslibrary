@@ -8,26 +8,37 @@
 <div class='book-info'>
     <div>Название: {{ book.title }}</div>
     <div>Автор: {{ book.author }}</div>
+
     {% if book.language %}
-    <div>Язык: {{ book.language }}</div>
+        <div>Язык: {{ book.language }}</div>
     {% endif %}
+
     {% if book.goodreads_link %}
-    <div><a href="{{ book.goodreads_link }}">Ссылка на Goodreads</a></div>
+        <div><a href="{{ book.goodreads_link }}">Ссылка на Goodreads</a></div>
     {% endif %}
-    <div><a href="{{ book.file.url }}">Ссылка на файл</a></div>
-    <div>Статус ревью: {{ book.review_status }}, ревьюер:
-        {% if book.reviewer %}
-        <a href="mailto:{{ book.reviewer.email }}">{{ book.reviewer }}</a>
-        {% else %}
-        не назначен
+
+    {% if full_info_visible %}
+        {% if download_links_visible %}
+            <div><a href="{{ book.file.url }}">Ссылка на файл</a></div>
         {% endif %}
-    </div>
-    <div class='book-action'>
-        {% if is_in_my_books %}
-        <a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
-        {% else %}
-        <a href="{% url 'addbook' id=book.id %}">Добавить в список моих книг</a>
-    </div>
+
+        <div>Статус ревью: {{ book.review_status }}, ревьюер:
+            {% if book.reviewer %}
+                <a href="mailto:{{ book.reviewer.email }}">{{ book.reviewer }}</a>
+            {% else %}
+                не назначен
+            {% endif %}
+        </div>
+
+        {% if in_my_books != None %}
+            <div class='book-action'>
+                {% if in_my_books %}
+                    <a href="{% url 'delbook' id=book.id %}">Удалить из списка моих книг</a>
+                {% else %}
+                    <a href="{% url 'addbook' id=book.id %}">Добавить в список моих книг</a>
+            </div>
+        {% endif %}
+    {% endif %}
 </div>
 {% endif %}
 {% endblock %}
