@@ -10,7 +10,7 @@
     <meta property="og:title" content="{% block ogtitle %}Моя библиотека{% endblock %}" />
     <meta property="og:type" content="book" />
     <meta property="og:description" content="{% block ogdescription %}{% endblock %}" />
-    <meta property="og:image" content="{{request.scheme}}://{{request.META.HTTP_HOST}}{% static 'img/book-icon-152-191918.png' %}" />
+    <meta property="og:image" content="{% static 'img/book-icon-152-191918.png' %}" />
     <meta property="og:url" content="{{ request.build_absolute_uri }}{{ object.get_absolute_url }}" />
 </head>
 
