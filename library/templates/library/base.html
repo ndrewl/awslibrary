@@ -1,5 +1,5 @@
 {% load static %}
-<html>
+<html prefix="og: http://ogp.me/ns#">
 
 <head>
     <title>{% block title %}Моя библиотека{% endblock %}</title>
@@ -7,7 +7,6 @@
     <link rel="icon" type="image/x-icon" href="{% static 'img/book-icon-152-191918.png' %}">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <!-- OGP properties -->
-    <head prefix="og: http://ogp.me/ns#"></head>
     <meta property="og:title" content="{% block ogtitle %}Моя библиотека{% endblock %}" />
     <meta property="og:type" content="book" />
     <meta property="og:description" content="{% block ogdescription %}{% endblock %}" />
