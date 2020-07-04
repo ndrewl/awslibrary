@@ -1,5 +1,9 @@
 {% extends 'library/base.html' %}
 
+{% block title %}{{ book.author }} - {{ book.title }} (Моя библиотека){% endblock %}
+{% block ogtitle %}{{ book.author }} - {{ book.title }} (Моя библиотека){% endblock %}
+{% block ogdescription %}Книга: {{ book.title }}, автор: {{ book.author }}, язык: {{ book.language }}{% endblock %}
+
 {% block content %}
 <div class='book-info'>
     <div>Название: {{ book.title }}</div>
